@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>登录页面</title>
+</head>
+
+<body>
+<script>
+    function CheckForm() {
+        var name = document.getElementById("username").value;
+        var Password = document.getElementById("pass").value;
+        user = /admin/;
+        pass = /123456/;
+        if (!user.test(name)) {
+            alert("用户名错误");
+            return false;
+        }
+        if (!pass.test(Password)) {
+            alert("密码错误");
+            return false;
+        }
+        alert("登录成功！");
+        return true;
+    }
+</script>
+<style>
+    body {
+        background-color: aqua;
+    }
+
+    form {
+        font-family: 楷体;
+        font-size: 16px;
+        color: #336699;
+        text-align: center;
+        line-height: 200%;
+    }
+</style>
+<form name="MYform" method="post" th:action="@{/login/input}" onsubmit="return CheckForm()">
+    用户名<input type="text" id="username" name="user"> <br>
+    密 码 <input type="password" id="pass" name="password"><br>
+    <input type="submit" value="登录"><br>
+    <p style="background-color:rgb(48, 3, 3); color: red;">
+        <b>测试账户：</b> 用户名：admin 密码：123456
+    </p>
+</form>
+</body>
+<html>
